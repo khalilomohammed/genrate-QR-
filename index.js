@@ -1,47 +1,35 @@
-let compute=document.getElementById("compute");
-let height=document.getElementById("height");
-let weight=document.getElementById("weight");
-let result=document.getElementById("result");
-let output=document.getElementById("output");
-console.log(output);
-
-
-
-// security anti hack
-function security(){
-    var myrequest=new XMLHttpRequest();
-    myrequest.onreadystatechange=function(){
-if(this.readyState === 4 &&this.status){
+ let input=document.getElementById("date");
+ let result=document.getElementById("result");
+ function getbirth(){
+    let birthdate=new Date(input.value);
+    d1=birthdate.getDate();
+    m1=birthdate.getMonth();
+    y1=birthdate.getFullYear();
+    let curdate=new Date();
+d2=curdate.getDate();
+m2=curdate.getMonth()+1;
+y2=curdate.getFullYear();
+let y3,m3,d3;
+y3=y2-y1;
+if(m2>=m1){
+    m3=m2-m1;
+}else{
+    y3--;
+    m3=12+m2-m1;
 }
-
-    }
-    myrequest.open("GET","http://127.0.0.2:5500/index.html",false);
-    myrequest.send()
-};
-       
-
-
-// validtion form
-function validtion(){
-    if(height.value===""&&weight.value===""){
-        confirm("sorry full the gabs");
-    }
+if(d2>=d1){
+d3=d2-d1;
+}else{
+    m3--;
+    d3=getdaysinmonth(y1,m1)+d2-d1;
 }
-
-
-
-function getinputs(){
-  security();
-validtion();
- result.value=weight.value/height.value*height.value;
- if(result.value < 18.5){
-  output.innerHTML="Under Weight";
- }else if(result.value >= 18.5 && result.value<=24.9){
-    output.innerHTML="Normal Weight"
- }else if(result.value >= 25&&result.value<=29.9){
-    output.innerHTML="Over Weight";
- }else{
-    output.innerHTML="Obseity";
- }
-
+if(m3<0){
+    m3=11;
+    y3--;
+}
+result.value=`Your age is ${y3} Year and ${m3} Month and ${d3} days`;
 };
+
+function getdaysinmonth(year,month){
+    return new Date(year,month,0).getDate();
+}
