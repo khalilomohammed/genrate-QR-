@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    </head>
+<body>
+    <div class="parent">
+        <h1>Body Mass Index (BMI) Calculator</h1>
+        <label for="">Your Height (cm);</label>   
+        <input  type="number" class="height" id="height" placeholder="Enter Your Height In cm" >
+        <label id="weightlabel" for="">Your Weight (kg);</label>   
+         <input type="number" class="weight" id="weight" placeholder="Enter Your Weight In kg">
+           <button id="compute" onclick="getinputs()">Compute BIM</button>
+           <input type="number" class="result" id="result" disabled>
+           <div class="statues">
+            <h2 class="object">Weight Condition:<span id="output"></span></h2>
+       </div>
+       <script src="index.js"></script>
+       </body>
+       </html>
+         
